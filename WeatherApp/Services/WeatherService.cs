@@ -35,19 +35,16 @@ namespace WeatherApp.Services
 
                 switch (response.Cod)
                 {
+                    case 200: return JsonConvert.DeserializeObject<WeatherResponse>(encodedJson);
+                    case 400: return JsonConvert.DeserializeObject<ErrorResponse>(encodedJson);
                     case 401:
                         errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(encodedJson);
                         errorResponse.Message = "Неверный ключ API";
-                        return JsonConvert.DeserializeObject<ErrorResponse>(encodedJson);
-                    case 400:
-                        errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(encodedJson);
-                        return JsonConvert.DeserializeObject<ErrorResponse>(encodedJson);
+                        return errorResponse;
                     case 404:
                         errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(encodedJson);
                         errorResponse.Message = "Город не найден";
                         return errorResponse;
-                    case 200:
-                        return JsonConvert.DeserializeObject<WeatherResponse>(encodedJson);
                 }
             }
             catch (Exception ex)
