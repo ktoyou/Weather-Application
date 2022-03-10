@@ -65,6 +65,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\KelvinToCeilsConverter.cs" />
+    <Compile Include="Models\ITemperatureConverter.cs" />
     <Compile Include="Models\Responses\ErrorResponse.cs" />
     <Compile Include="Models\Responses\Response.cs" />
     <Compile Include="Models\Responses\WeatherResponse.cs" />
@@ -110,7 +112,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\rain.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\search.png" />
   </ItemGroup>
@@ -118,13 +122,16 @@
     <Resource Include="Assets\moon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\sun.png" />
+    <Resource Include="Assets\clear.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\cloud.png" />
+    <Resource Include="Assets\clouds.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\night_sky.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\snow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

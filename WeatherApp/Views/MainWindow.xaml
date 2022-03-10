@@ -54,77 +54,72 @@
                          Padding="0"/>
             </Grid>
         </ControlTemplate>
-        <Storyboard x:Key="ToogleAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="stackPanel" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="-49">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="stackPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="50">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="grid1" Storyboard.TargetProperty="(UIElement.Opacity)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-
+        <Style TargetType="Grid" x:Key="ToogleAnimation">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding WeatherLoading}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-50">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseIn"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity">
+                                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseIn"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-50">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseIn"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity">
+                                    <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseIn"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                    <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseInOut"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -145,7 +140,15 @@
                 </Button>
             </DockPanel>
         </DockPanel>
-        <Grid x:Name="grid" Grid.Row="1" VerticalAlignment="Center" Margin="0,0,0,50"  HorizontalAlignment="Center">
+        <Grid Style="{StaticResource ToogleAnimation}" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -159,18 +162,11 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </StackPanel.RenderTransform>
-                <Label FontSize="30" HorizontalContentAlignment="Center" Content="{Binding CurrentWeather.Name}" Foreground="#fff"/>
+                <Label FontSize="30" Margin="0,0,0,10" HorizontalContentAlignment="Center" Content="{Binding CurrentWeather.Name}" Foreground="#fff"/>
                 <DockPanel x:Name="dockPanel" Height="100" Margin="0" RenderTransformOrigin="0.5,0.5">
-                    <DockPanel.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </DockPanel.RenderTransform>
                     <Label VerticalAlignment="Top" FontSize="40" Margin="0" Padding="0" Foreground="#fff" Content="{Binding CurrentWeather.Main.Temp}"/>
-                    <Image VerticalAlignment="Top" Margin="0" Width="128" Source="/Assets/cloud.png"/>
+                    <Label VerticalAlignment="Top" FontSize="40" Margin="0" Padding="0" Foreground="#fff" Content="°"/>
+                    <Image VerticalAlignment="Top" Margin="0" Width="128" Source="{Binding CurrentWeatherImage}"/>
                 </DockPanel>
             </StackPanel>
             <Grid x:Name="grid1" Grid.Row="1" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
@@ -194,14 +190,17 @@
                 <DockPanel Margin="0,0,20,0" Grid.Column="0" VerticalAlignment="Center">
                     <Label Content="По ощущениям: "/>
                     <Label Content="{Binding CurrentWeather.Main.FeelsLike}"/>
+                    <Label Content="°"/>
                 </DockPanel>
                 <DockPanel Margin="0,0,20,0" Grid.Column="1" VerticalAlignment="Center">
                     <Label Content="Ветер: "/>
                     <Label Content="{Binding CurrentWeather.Wind.Speed}"/>
+                    <Label Content="м/c"/>
                 </DockPanel>
                 <DockPanel Margin="0,0,20,0" Grid.Column="2" VerticalAlignment="Center">
                     <Label Content="Видимость: "/>
                     <Label Content="{Binding CurrentWeather.Wind.Gust}"/>
+                    <Label Content="%"/>
                 </DockPanel>
                 <DockPanel Margin="0,0,20,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
                     <Label Content="Давление: "/>
@@ -210,10 +209,12 @@
                 <DockPanel Margin="0,0,20,0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
                     <Label Content="Влажность: "/>
                     <Label Content="{Binding CurrentWeather.Main.Humidity}"/>
+                    <Label Content="%"/>
                 </DockPanel>
                 <DockPanel Margin="0,0,20,0" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
                     <Label Content="Точка росы: "/>
                     <Label Content="{Binding CurrentWeather.Wind.Deg}"/>
+                    <Label Content="°"/>
                 </DockPanel>
             </Grid>
         </Grid>
