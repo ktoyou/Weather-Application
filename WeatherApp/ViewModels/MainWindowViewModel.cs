@@ -78,7 +78,9 @@ namespace WeatherApp.ViewModels
                     weatherResponse.Main.TempMin = (float)Math.Round(kelvinToCeils.Convert(weatherResponse.Main.TempMin), 1);
                     weatherResponse.Main.FeelsLike = (float)Math.Round(kelvinToCeils.Convert(weatherResponse.Main.FeelsLike), 1);
                     weatherResponse.Main.Temp = (float)Math.Round(kelvinToCeils.Convert(weatherResponse.Main.Temp), 1);
-
+                    weatherResponse.Sunset = DateTimeOffset.FromUnixTimeSeconds(weatherResponse.Sys.Sunset).ToString("g");
+                    weatherResponse.Sunrise = DateTimeOffset.FromUnixTimeSeconds(weatherResponse.Sys.Sunrise).ToString("g");
+                    
                     CurrentWeather = weatherResponse;
                     CurrentWeatherImage = $"/Assets/{CurrentWeather.Weather[0].Main.ToLower()}.png";
                     WeatherLoading = false;

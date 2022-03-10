@@ -17,5 +17,9 @@ namespace WeatherApp.Models.Responses
         [JsonProperty("name")] public string Name { get; set; }
 
         [JsonProperty("timezone")] public int TimeZone { get; set; }
+
+        public string Sunset { get; set; }
+
+        public string Sunrise { get; set; }
     }
 }

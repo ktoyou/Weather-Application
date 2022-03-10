@@ -47,12 +47,46 @@
                          x:Name="sv"
                          VerticalAlignment="Center"
                          VerticalContentAlignment="Center"
-                         HorizontalAlignment="Center"
                          Content="{TemplateBinding Text}"
-                         Background="Transparent" 
+                         Background="Transparent"
+                         Margin="10,0,0,0"
                          BorderThickness="0"
                          Padding="0"/>
             </Grid>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="SearchButton">
+            <Border>
+                <Image Source="/Assets/search.png" 
+                       Width="{TemplateBinding Width}" 
+                       Height="{TemplateBinding Height}"
+                       x:Name="img"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0:0.1" Storyboard.TargetName="img" Storyboard.TargetProperty="Height" From="32" To="24">
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseIn"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0:0.1" Storyboard.TargetName="img" Storyboard.TargetProperty="Height" From="24" To="32">
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style TargetType="Grid" x:Key="ToogleAnimation">
             <Style.Triggers>
@@ -135,12 +169,18 @@
             <Label Content="Погода" Foreground="#fff" FontSize="20" VerticalContentAlignment="Center" Margin="30,0,0,0"/>
             <DockPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10">
                 <TextBox Tag="Название города" Text="{Binding City}" FontSize="15" HorizontalAlignment="Left" Height="40" Width="200" Foreground="#fff" Template="{StaticResource CustomTBox}"/>
-                <Button Command="{Binding GetWeatherCommand}" Margin="10,0,0,0" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Width="32" Height="32">
-                    <Image Width="32" Height="32" Source="/Assets/search.png"/>
-                </Button>
+                <Button Command="{Binding GetWeatherCommand}" 
+                        Margin="10,0,0,0" Width="32" 
+                        Height="32" 
+                        Tag="/Assets/search.png" 
+                        HorizontalAlignment="Left" 
+                        Template="{StaticResource SearchButton}"/>
             </DockPanel>
         </DockPanel>
-        <Grid Style="{StaticResource ToogleAnimation}" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0">
+        <Grid Style="{StaticResource ToogleAnimation}" 
+              Grid.Row="1" VerticalAlignment="Center"  
+              HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" 
+              Margin="0,0,0,0">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -153,7 +193,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel x:Name="stackPanel" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <StackPanel x:Name="stackPanel" 
+                        Grid.Row="0" VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" 
+                        RenderTransformOrigin="0.5,0.5">
                 <StackPanel.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -162,14 +205,28 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </StackPanel.RenderTransform>
-                <Label FontSize="30" Margin="0,0,0,10" HorizontalContentAlignment="Center" Content="{Binding CurrentWeather.Name}" Foreground="#fff"/>
-                <DockPanel x:Name="dockPanel" Height="100" Margin="0" RenderTransformOrigin="0.5,0.5">
-                    <Label VerticalAlignment="Top" FontSize="40" Margin="0" Padding="0" Foreground="#fff" Content="{Binding CurrentWeather.Main.Temp}"/>
-                    <Label VerticalAlignment="Top" FontSize="40" Margin="0" Padding="0" Foreground="#fff" Content="°"/>
-                    <Image VerticalAlignment="Top" Margin="0" Width="128" Source="{Binding CurrentWeatherImage}"/>
+                <Label FontSize="30" 
+                       Margin="0,0,0,10" 
+                       HorizontalContentAlignment="Center" 
+                       Content="{Binding CurrentWeather.Name}" 
+                       Foreground="#fff"/>
+                <DockPanel x:Name="dockPanel" 
+                           Height="100" Margin="0" 
+                           RenderTransformOrigin="0.5,0.5">
+                    <Label VerticalAlignment="Top" 
+                           FontSize="40" Margin="0" 
+                           Padding="0" Foreground="#fff"
+                           Content="{Binding CurrentWeather.Main.Temp}"/>
+                    <Label VerticalAlignment="Top" FontSize="40" 
+                           Margin="0" Padding="0" Foreground="#fff" Content="°"/>
+                    <Image VerticalAlignment="Top" 
+                           Margin="0" Width="128" 
+                           Source="{Binding CurrentWeatherImage}"/>
                 </DockPanel>
             </StackPanel>
-            <Grid x:Name="grid1" Grid.Row="1" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Grid x:Name="grid1" Grid.Row="1" 
+                  HorizontalAlignment="Center" 
+                  RenderTransformOrigin="0.5,0.5">
                 <Grid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -184,6 +241,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
@@ -215,6 +273,14 @@
                     <Label Content="Точка росы: "/>
                     <Label Content="{Binding CurrentWeather.Wind.Deg}"/>
                     <Label Content="°"/>
+                </DockPanel>
+                <DockPanel Margin="0,0,20,0" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">
+                    <Label Content="Рассвет: "/>
+                    <Label Content="{Binding CurrentWeather.Sunrise}"/>
+                </DockPanel>
+                <DockPanel Margin="0,0,20,0" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
+                    <Label Content="Закат: "/>
+                    <Label Content="{Binding CurrentWeather.Sunset}"/>
                 </DockPanel>
             </Grid>
         </Grid>
