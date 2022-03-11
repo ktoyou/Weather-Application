@@ -61,11 +61,20 @@ namespace WeatherApp.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 3f62ca07c8bf106141315f662ddd67d7.
+        ///   Ищет локализованную строку, похожую на .
         /// </summary>
         internal static string apiKey {
             get {
                 return ResourceManager.GetString("apiKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        internal static string geolocationApiKey {
+            get {
+                return ResourceManager.GetString("geolocationApiKey", resourceCulture);
             }
         }
     }

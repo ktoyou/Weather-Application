@@ -177,7 +177,8 @@
                         Template="{StaticResource SearchButton}"/>
             </DockPanel>
         </DockPanel>
-        <Grid Style="{StaticResource ToogleAnimation}" 
+        <Grid Style="{StaticResource ToogleAnimation}"
+              Visibility="{Binding WeatherVisibility}"
               Grid.Row="1" VerticalAlignment="Center"  
               HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" 
               Margin="0,0,0,0">

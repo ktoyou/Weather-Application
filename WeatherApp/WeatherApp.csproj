@@ -68,12 +68,14 @@
     <Compile Include="Models\KelvinToCeilsConverter.cs" />
     <Compile Include="Models\ITemperatureConverter.cs" />
     <Compile Include="Models\Responses\ErrorResponse.cs" />
+    <Compile Include="Models\Responses\GeolocationResponse.cs" />
     <Compile Include="Models\Responses\Response.cs" />
     <Compile Include="Models\Responses\WeatherResponse.cs" />
     <Compile Include="Models\Weather\Main.cs" />
     <Compile Include="Models\Weather\Sys.cs" />
     <Compile Include="Models\Weather\Weather.cs" />
     <Compile Include="Models\Weather\Wind.cs" />
+    <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="Services\HttpService.cs" />
     <Compile Include="Services\IHttpAsync.cs" />
     <Compile Include="Services\WeatherService.cs" />
