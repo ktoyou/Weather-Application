@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using WeatherApp.Models;
 using WeatherApp.Models.Responses;
 using WeatherApp.Properties;
 using WeatherApp.Services;
 using WeatherApp.ViewModels.Commands;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WeatherApp.ViewModels
 {
@@ -70,8 +69,8 @@ namespace WeatherApp.ViewModels
 
         public MainWindowViewModel()
         {
-            _weatherService = new WeatherService(new HttpService(), Resources.apiKey);
-            _geolocationService = new GeolocationService(new HttpService(), Resources.geolocationApiKey);
+            _weatherService = ServiceContainer.ServiceProvider.GetService<WeatherService>();
+            _geolocationService = ServiceContainer.ServiceProvider.GetService<GeolocationService>();
             SetDefaults();
 
             Task.Run(LoadWeatherByGeolocation);
@@ -88,7 +87,7 @@ namespace WeatherApp.ViewModels
             Response response = await _geolocationService.GetGeolocationAsync();
             switch (response)
             {
-                case ErrorResponse errorResponse:
+                case ErrorResponse _:
                     WeatherVisibility = Visibility.Hidden;
                     break;
                 case GeolocationResponse geolocationResponse:
@@ -104,7 +103,7 @@ namespace WeatherApp.ViewModels
             Response response = await _weatherService.GetWeatherAsync(_city);
             switch (response)
             {
-                case ErrorResponse errorResponse:
+                case ErrorResponse _:
                     WeatherVisibility = Visibility.Hidden;
                     break;
                 case WeatherResponse weatherResponse:

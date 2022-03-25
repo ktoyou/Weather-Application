@@ -5,14 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:WeatherApp.ViewModels"
         xmlns:local="clr-namespace:WeatherApp"
-        mc:Ignorable="d"
+        mc:Ignorable="d" DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}"
         Title="Погода" Height="450" Width="600"
         MaxHeight="800" MaxWidth="1200"
         MinHeight="350" MinWidth="500">
-
-    <Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>
 
     <Window.Resources>
         <Style TargetType="Label">
